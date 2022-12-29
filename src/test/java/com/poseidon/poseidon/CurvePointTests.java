@@ -1,7 +1,7 @@
-package com.nnk.springboot;
+package com.poseidon.poseidon;
 
-import com.nnk.springboot.domain.CurvePoint;
-import com.nnk.springboot.repositories.CurvePointRepository;
+import com.poseidon.poseidon.domain.CurvePoint;
+import com.poseidon.poseidon.repositories.CurvePointRepository;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

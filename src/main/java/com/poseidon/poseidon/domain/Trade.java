@@ -1,4 +1,6 @@
-package com.nnk.springboot.domain;
+package com.poseidon.poseidon.domain;
+
+import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -7,8 +9,11 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name = "trade")
+@Data
 public class Trade {
     // TODO: Map columns in data table TRADE with corresponding java fields
+
+    @Id
     Integer tradeId;
     String account;
     String type;

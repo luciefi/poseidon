@@ -1,4 +1,4 @@
-package com.nnk.springboot.exceptions;
+package com.poseidon.poseidon.exceptions;
 
 public class BidListNotFoundException extends NotFoundException {
     public BidListNotFoundException() {

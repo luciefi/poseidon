@@ -1,8 +1,8 @@
-package com.nnk.springboot.services;
+package com.poseidon.poseidon.services;
 
-import com.nnk.springboot.domain.BidList;
-import com.nnk.springboot.exceptions.BidListNotFoundException;
-import com.nnk.springboot.repositories.BidListRepository;
+import com.poseidon.poseidon.domain.BidList;
+import com.poseidon.poseidon.exceptions.BidListNotFoundException;
+import com.poseidon.poseidon.repositories.BidListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,18 +16,18 @@ public class BidListService implements IBidService {
 
     @Override
     public List<BidList> findAll() {
-        List<BidList> bidLists = repository.findAll();
-        return bidLists;
+        return repository.findAll();
     }
 
     @Override
-    public void save(BidList bid) {
-
+    public void save(BidList bidList) {
+        repository.save(bidList);
     }
 
     @Override
-    public void update(BidList bidList) {
-
+    public void update(BidList updatedBidList, int id) {
+        BidList oldBidList = findById(id);
+        repository.save(updateFields(oldBidList, updatedBidList));
     }
 
     @Override
@@ -38,5 +38,13 @@ public class BidListService implements IBidService {
     @Override
     public void delete(Integer id) {
         repository.deleteById(id);
+    }
+
+
+    private BidList updateFields(BidList bidList, BidList updatedBidList) {
+        bidList.setAccount(updatedBidList.getAccount());
+        bidList.setType(updatedBidList.getType());
+        bidList.setBidQuantity(updatedBidList.getBidQuantity());
+        return bidList;
     }
 }

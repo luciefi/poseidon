@@ -1,7 +1,7 @@
-package com.nnk.springboot;
+package com.poseidon.poseidon;
 
-import com.nnk.springboot.domain.BidList;
-import com.nnk.springboot.repositories.BidListRepository;
+import com.poseidon.poseidon.domain.BidList;
+import com.poseidon.poseidon.repositories.BidListRepository;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

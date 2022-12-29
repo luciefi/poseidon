@@ -1,4 +1,4 @@
-package com.nnk.springboot.controllers;
+package com.poseidon.poseidon.controllers;
 
 import junit.framework.TestCase;
 

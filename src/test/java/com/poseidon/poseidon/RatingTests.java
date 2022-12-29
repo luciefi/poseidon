@@ -1,7 +1,7 @@
-package com.nnk.springboot;
+package com.poseidon.poseidon;
 
-import com.nnk.springboot.domain.Rating;
-import com.nnk.springboot.repositories.RatingRepository;
+import com.poseidon.poseidon.domain.Rating;
+import com.poseidon.poseidon.repositories.RatingRepository;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

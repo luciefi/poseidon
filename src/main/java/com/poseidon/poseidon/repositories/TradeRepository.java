@@ -1,6 +1,6 @@
-package com.nnk.springboot.repositories;
+package com.poseidon.poseidon.repositories;
 
-import com.nnk.springboot.domain.Trade;
+import com.poseidon.poseidon.domain.Trade;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

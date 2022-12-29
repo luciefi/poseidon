@@ -1,4 +1,4 @@
-package com.nnk.springboot.services;
+package com.poseidon.poseidon.services;
 
 import org.springframework.stereotype.Service;
 
