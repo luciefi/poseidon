@@ -11,7 +11,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.containsString;
@@ -26,7 +25,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@WithMockUser
 public class BidListControllerTest {
 
     final int BID_LIST_ID = 1;
@@ -73,13 +71,9 @@ public class BidListControllerTest {
                 .andExpect(view().name("redirect:/bidList/list"));
         ArgumentCaptor<BidList> bidList = ArgumentCaptor.forClass(BidList.class);
         verify(service, Mockito.times(1)).save(bidList.capture());
-        /* TODO debug
-        assertEquals(BID_LIST_ID, bidList.getValue().getBidListId(), 0);
-
         assertEquals(BID_LIST_QUANTITY, bidList.getValue().getBidQuantity(), 0);
         assertEquals(BID_LIST_ACCOUNT, bidList.getValue().getAccount());
         assertEquals(BID_LIST_TYPE, bidList.getValue().getType());
-         */
     }
 
     @Test

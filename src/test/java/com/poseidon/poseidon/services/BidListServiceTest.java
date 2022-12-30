@@ -42,8 +42,6 @@ public class BidListServiceTest {
     }
 
     @Test
-    @Disabled
-    // TODO debug
     public void testSave() {
         // Arrange
         BidList newBidList = new BidList();
@@ -57,7 +55,6 @@ public class BidListServiceTest {
         // Assert
         ArgumentCaptor<BidList> bidList = ArgumentCaptor.forClass(BidList.class);
         verify(repository, times(1)).save(bidList.capture());
-        assertEquals(BID_LIST_ID, bidList.getValue().getBidListId(), 0);
         assertEquals(BID_LIST_QUANTITY, bidList.getValue().getBidQuantity(), 0);
         assertEquals(BID_LIST_ACCOUNT, bidList.getValue().getAccount());
         assertEquals(BID_LIST_TYPE, bidList.getValue().getType());
