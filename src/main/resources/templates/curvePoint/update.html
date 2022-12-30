@@ -14,9 +14,39 @@
 
 	<div class="row">
 		<form action="#" th:action="@{/curvePoint/update/{id}(id=${curvePoint.id})}" th:object="${curvePoint}" method="post" class="form-horizontal" style="width: 100%">
-			<!--
-			TODO: Create a form to edit the values of CurvePoint, there are 2 buttons: Update data and Cancel to the Curve Point
-			 -->
+			<div class="form-group m-3">
+				<div class="alert alert-danger alert-dismissible fade show my-2" role="alert" th:each="err : ${#fields.errors('global')}">
+					<span th:text="${err}"></span>
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+				<label for="curveIdInput" class="form-label h6 p-1">Curve Id</label>
+				<input
+						type="number" step="1" th:field="*{curveId}" class="form-control" id="curveIdInput"
+						placeholder="Curve Id" min="1">
+				<div class="text-danger p-1">
+					<small th:if="${#fields.hasErrors('curveId')}" th:errors="*{curveId}"></small>
+				</div>
+			</div>
+			<div class="form-group m-3">
+				<label for="termInput" class="form-label h6 p-1">Term</label>
+				<input
+						type="number" th:field="*{term}" class="form-control" id="termInput"
+						placeholder="Term" min="0">
+				<div class="text-danger p-1">
+					<small th:if="${#fields.hasErrors('term')}" th:errors="*{term}"></small>
+				</div>
+			</div>
+			<div class="form-group m-3">
+				<label for="valueInput" class="form-label h6 p-1">Value</label>
+				<input
+						type="number" th:field="*{value}" class="form-control" id="valueInput"
+						placeholder="Value" min="0">
+				<div class="text-danger p-1">
+					<small th:if="${#fields.hasErrors('value')}" th:errors="*{value}"></small>
+				</div>
+			</div>
+			<a href="/curvePoint/list" class="m-1 btn btn-warning">Cancel</a>
+			<button type="submit" class="m-1 btn btn-primary">Update CurvePoint</button>
 		</form>
 	</div>
 

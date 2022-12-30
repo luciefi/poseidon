@@ -10,16 +10,23 @@ import java.sql.Timestamp;
 
 
 @Entity
-@Table(name = "curvepoint")
 @Data
 public class CurvePoint {
-    // TODO: Map columns in data table CURVEPOINT with corresponding java fields
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
+
+    @NotNull(message = "curve id is mandatory")
     Integer curveId;
+
     Timestamp asOfDate;
+
+    @NotNull(message = "term is mandatory")
     Double term;
+
+    @NotNull(message = "value is mandatory")
     Double value;
+
     Timestamp creationDate;
 }
