@@ -1,7 +1,6 @@
 package com.poseidon.poseidon.controllers;
 
 import com.poseidon.poseidon.domain.BidList;
-import com.poseidon.poseidon.exceptions.BidListAlreadyExistsException;
 import com.poseidon.poseidon.exceptions.BidListNotFoundException;
 import com.poseidon.poseidon.services.IBidService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,11 +41,7 @@ public class BidListController {
         if (result.hasErrors()) {
             return "bidList/add";
         }
-        try {
-            service.save(bidList);
-        } catch (BidListAlreadyExistsException e) {
-            return "bidList/add";
-        }
+        service.save(bidList);
         return "redirect:/bidList/list";
     }
 
@@ -61,12 +56,12 @@ public class BidListController {
     public String updateBid(@PathVariable("id") Integer id, @Valid BidList bidList,
                             BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "bidList/update/{id}";
+            return "bidList/update";
         }
         try {
             service.update(bidList, id);
         } catch (BidListNotFoundException e) {
-            return "bidList/update/{id}";
+            return "bidList/update";
         }
 
         return "redirect:/bidList/list";
@@ -74,15 +69,7 @@ public class BidListController {
 
     @GetMapping("/bidList/delete/{id}")
     public String deleteBid(@PathVariable("id") Integer id, Model model) {
-
-        try {
-            service.delete(id);
-        }
-        catch(BidListNotFoundException e){
-            return "bidList/list";
-        }
-        List<BidList> bidLists = service.findAll();
-        model.addAttribute("bidLists", bidLists);
+        service.delete(id);
         return "redirect:/bidList/list";
     }
 }

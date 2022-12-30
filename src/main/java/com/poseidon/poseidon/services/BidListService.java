@@ -37,6 +37,7 @@ public class BidListService implements IBidService {
 
     @Override
     public void delete(Integer id) {
+        // TODO vérifier que le user peut delete ce bidlist ?
         repository.deleteById(id);
     }
 
