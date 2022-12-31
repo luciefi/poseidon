@@ -2,7 +2,7 @@ package com.poseidon.poseidon.controllers;
 
 import com.poseidon.poseidon.domain.Rating;
 import com.poseidon.poseidon.exceptions.RatingNotFoundException;
-import com.poseidon.poseidon.services.RatingService;
+import com.poseidon.poseidon.services.IRatingService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -34,7 +34,7 @@ public class RatingControllerTest {
     final Integer RATING_ORDER_NUMBER = 2;
 
     @MockBean
-    RatingService service;
+    IRatingService service;
 
     @Autowired
     public MockMvc mockMvc;

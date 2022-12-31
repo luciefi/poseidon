@@ -2,7 +2,7 @@ package com.poseidon.poseidon.controllers;
 
 import com.poseidon.poseidon.domain.BidList;
 import com.poseidon.poseidon.exceptions.BidListNotFoundException;
-import com.poseidon.poseidon.services.BidListService;
+import com.poseidon.poseidon.services.IBidService;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
@@ -34,7 +34,7 @@ public class BidListControllerTest {
 
 
     @MockBean
-    BidListService service;
+    IBidService service;
 
     @Autowired
     public MockMvc mockMvc;

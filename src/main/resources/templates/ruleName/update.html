@@ -1,26 +1,84 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="utf-8"/>
-	<title>Home</title>
-	<link rel="stylesheet" href="../../css/bootstrap.min.css" >
+    <meta charset="utf-8"/>
+    <title>Home</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
 </head>
 <body>
 <div class="container">
 
-	<div class="row">
-		<h2>Update New Rule</h2>
-	</div>
+    <div class="row">
+        <h2>Update Rule</h2>
+    </div>
 
-	<div class="row">
-		<form action="#" th:action="@{/ruleName/update/{id}(id=${ruleName.id})}" th:object="${ruleName}" method="post" class="form-horizontal" style="width: 100%">
-			<!--
-			TODO: Create a form to edit the values of RuleName, there are 2 buttons: Update data and Cancel to the RuleName
-			 -->
-
-		</form>
-	</div>
+    <div class="row">
+        <form action="#" th:action="@{/ruleName/update/{id}(id=${ruleName.id})}" th:object="${ruleName}" method="post" class="form-horizontal"
+              style="width: 100%">
+            <form action="#" th:action="@{/ruleName/validate}" th:object="${ruleName}" method="post" class="form-horizontal" style="width: 100%">
+                <div class="form-group m-3">
+                    <div class="alert alert-danger alert-dismissible fade show my-2" role="alert" th:each="err : ${#fields.errors('global')}">
+                        <span th:text="${err}"></span>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <label for="nameInput" class="form-label h6 p-1">Name</label>
+                    <input
+                            type="text" th:field="*{name}" class="form-control" id="nameInput"
+                            placeholder="Name" maxlength="125">
+                    <div class="text-danger p-1">
+                        <small th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>
+                    </div>
+                </div>
+                <div class="form-group m-3">
+                    <label for="descriptionInput" class="form-label h6 p-1">Decription</label>
+                    <input
+                            type="text" th:field="*{description}" class="form-control" id="descriptionInput"
+                            placeholder="Description" maxlength="125">
+                    <div class="text-danger p-1">
+                        <small th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></small>
+                    </div>
+                </div>
+                <div class="form-group m-3">
+                    <label for="jsonInput" class="form-label h6 p-1">JSON</label>
+                    <input
+                            type="text" th:field="*{json}" class="form-control" id="jsonInput"
+                            placeholder="JSON" maxlength="125">
+                    <div class="text-danger p-1">
+                        <small th:if="${#fields.hasErrors('json')}" th:errors="*{json}"></small>
+                    </div>
+                </div>
+                <div class="form-group m-3">
+                    <label for="templateInput" class="form-label h6 p-1">Template</label>
+                    <input
+                            type="text" th:field="*{template}" class="form-control" id="templateInput"
+                            placeholder="Template" maxlength="512">
+                    <div class="text-danger p-1">
+                        <small th:if="${#fields.hasErrors('template')}" th:errors="*{template}"></small>
+                    </div>
+                </div>
+                <div class="form-group m-3">
+                    <label for="sqlStrInput" class="form-label h6 p-1">SQL</label>
+                    <input
+                            type="text" th:field="*{sqlStr}" class="form-control" id="sqlStrInput"
+                            placeholder="SQL" maxlength="125">
+                    <div class="text-danger p-1">
+                        <small th:if="${#fields.hasErrors('sqlStr')}" th:errors="*{sqlStr}"></small>
+                    </div>
+                </div>
+                <div class="form-group m-3">
+                    <label for="sqlPartInput" class="form-label h6 p-1">SQL Part</label>
+                    <input
+                            type="text" th:field="*{sqlPart}" class="form-control" id="sqlPartInput"
+                            placeholder="SQL Part" maxlength="125">
+                    <div class="text-danger p-1">
+                        <small th:if="${#fields.hasErrors('sqlPart')}" th:errors="*{sqlPart}"></small>
+                    </div>
+                </div>
+                <a href="/rating/list" class="m-1 btn btn-warning">Cancel</a>
+                <button type="submit" class="m-1 btn btn-primary">Add Rule Name</button>
+            </form>
+    </div>
 
 </div>
 </body>

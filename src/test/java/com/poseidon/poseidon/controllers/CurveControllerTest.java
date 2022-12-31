@@ -3,6 +3,7 @@ package com.poseidon.poseidon.controllers;
 import com.poseidon.poseidon.domain.CurvePoint;
 import com.poseidon.poseidon.exceptions.CurvePointNotFoundException;
 import com.poseidon.poseidon.services.CurvePointService;
+import com.poseidon.poseidon.services.ICurvePointService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -33,7 +34,7 @@ class CurveControllerTest {
     final Double CURVE_POINT_VALUE = 2d;
 
     @MockBean
-    CurvePointService service;
+    ICurvePointService service;
 
     @Autowired
     public MockMvc mockMvc;
