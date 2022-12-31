@@ -1,22 +1,31 @@
 package com.poseidon.poseidon.domain;
 
 import lombok.Data;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import java.sql.Timestamp;
 
-
 @Entity
-@Table(name = "trade")
 @Data
 public class Trade {
-    // TODO: Map columns in data table TRADE with corresponding java fields
-
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer tradeId;
+
+    @NotBlank(message = "account is mandatory")
+    @Length(max = 30, message = "account is too long")
     String account;
+
+    @NotBlank(message = "type is mandatory")
+    @Length(max = 30, message = "type is too long")
     String type;
+
+    @NotNull(message = "account is mandatory")
+    @Positive(message = "buy quantity must be positive")
     Double buyQuantity;
     Double sellQuantity;
     Double buyPrice;
