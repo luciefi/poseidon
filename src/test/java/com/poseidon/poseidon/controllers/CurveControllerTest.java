@@ -27,7 +27,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 class CurveControllerTest {
 
-
     final int CURVE_POINT_ID = 1;
     final int CURVE_POINT_CURVE_ID = 1;
     final Double CURVE_POINT_TERM = 1d;

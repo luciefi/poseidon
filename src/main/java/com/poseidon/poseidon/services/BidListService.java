@@ -41,7 +41,6 @@ public class BidListService implements IBidService {
         repository.deleteById(id);
     }
 
-
     private BidList updateFields(BidList bidList, BidList updatedBidList) {
         bidList.setAccount(updatedBidList.getAccount());
         bidList.setType(updatedBidList.getType());
