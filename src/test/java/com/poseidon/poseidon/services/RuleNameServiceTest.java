@@ -3,7 +3,6 @@ package com.poseidon.poseidon.services;
 import com.poseidon.poseidon.domain.RuleName;
 import com.poseidon.poseidon.exceptions.RuleNameNotFoundException;
 import com.poseidon.poseidon.repositories.RuleNameRepository;
-import com.poseidon.poseidon.repositories.RuleNameRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -18,7 +17,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-
 public class RuleNameServiceTest {
 
     final int RULE_NAME_ID = 1;

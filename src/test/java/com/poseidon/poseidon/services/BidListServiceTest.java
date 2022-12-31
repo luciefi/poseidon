@@ -3,14 +3,12 @@ package com.poseidon.poseidon.services;
 import com.poseidon.poseidon.domain.BidList;
 import com.poseidon.poseidon.exceptions.BidListNotFoundException;
 import com.poseidon.poseidon.repositories.BidListRepository;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.security.test.context.support.WithMockUser;
 
 import java.util.Optional;
 
