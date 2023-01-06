@@ -127,6 +127,11 @@ public class RuleNameServiceTest {
 
     @Test
     public void testDelete() {
+        // Arrange
+        RuleName ruleNameFromRepo = new RuleName();
+        ruleNameFromRepo.setId(RULE_NAME_ID);
+        when(repository.findById(RULE_NAME_ID)).thenReturn(Optional.of(ruleNameFromRepo));
+
         // Act
         service.delete(RULE_NAME_ID);
 

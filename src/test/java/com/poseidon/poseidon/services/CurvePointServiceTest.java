@@ -111,6 +111,11 @@ public class CurvePointServiceTest {
 
     @Test
     public void testDelete() {
+        // Arrange
+        CurvePoint curvePointFromRepo = new CurvePoint();
+        curvePointFromRepo.setId(CURVE_POINT_ID);
+        when(repository.findById(CURVE_POINT_ID)).thenReturn(Optional.of(curvePointFromRepo));
+
         // Act
         service.delete(CURVE_POINT_ID);
 

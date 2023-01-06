@@ -3,7 +3,6 @@ package com.poseidon.poseidon.controllers;
 import com.poseidon.poseidon.domain.Trade;
 import com.poseidon.poseidon.exceptions.TradeNotFoundException;
 import com.poseidon.poseidon.services.ITradeService;
-import com.poseidon.poseidon.services.ITradeService;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
@@ -19,7 +18,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -33,7 +31,7 @@ public class TradeControllerTest {
     final String TRADE_ACCOUNT = "account";
     final String TRADE_TYPE = "type";
     final Double TRADE_QUANTITY = 1d;
-    
+
     @MockBean
     ITradeService service;
 
@@ -161,5 +159,4 @@ public class TradeControllerTest {
                 .andExpect(view().name("redirect:/trade/list"));
         verify(service, Mockito.times(1)).delete(TRADE_ID);
     }
-    
 }

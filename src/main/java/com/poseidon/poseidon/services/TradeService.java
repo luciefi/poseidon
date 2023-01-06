@@ -37,7 +37,7 @@ public class TradeService implements ITradeService {
 
     @Override
     public void delete(Integer id) {
-        // TODO vérifier que le user peut delete ce trade ?
+        findById(id);
         repository.deleteById(id);
     }
 

@@ -24,7 +24,6 @@ public class TradeServiceTest {
     final String TRADE_TYPE = "type";
     final Double TRADE_QUANTITY = 1d;
 
-
     @InjectMocks
     private TradeService service;
 
@@ -113,6 +112,11 @@ public class TradeServiceTest {
 
     @Test
     public void testDelete() {
+        // Arrange
+        Trade tradeFromRepo = new Trade();
+        tradeFromRepo.setTradeId(TRADE_ID);
+        when(repository.findById(TRADE_ID)).thenReturn(Optional.of(tradeFromRepo));
+
         // Act
         service.delete(TRADE_ID);
 

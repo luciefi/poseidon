@@ -38,7 +38,7 @@ public class RatingService implements IRatingService {
 
     @Override
     public void delete(Integer id) {
-        // TODO vérifier que le user peut delete ce rating ?
+        findById(id);
         repository.deleteById(id);
     }
 

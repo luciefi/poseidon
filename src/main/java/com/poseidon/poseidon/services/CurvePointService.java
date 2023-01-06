@@ -37,7 +37,7 @@ public class CurvePointService implements ICurvePointService {
 
     @Override
     public void delete(Integer id) {
-        // TODO vérifier que le user peut delete ce curve point ?
+        findById(id);
         repository.deleteById(id);
     }
 

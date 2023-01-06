@@ -117,6 +117,11 @@ public class RatingServiceTest {
 
     @Test
     public void testDelete() {
+        // Arrange
+        Rating ratingFromRepo = new Rating();
+        ratingFromRepo.setId(RATING_ID);
+        when(repository.findById(RATING_ID)).thenReturn(Optional.of(ratingFromRepo));
+
         // Act
         service.delete(RATING_ID);
 

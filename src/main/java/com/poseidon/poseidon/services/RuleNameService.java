@@ -37,7 +37,7 @@ public class RuleNameService implements IRuleNameService {
 
     @Override
     public void delete(Integer id) {
-        // TODO vérifier que le user peut delete ce ruleName ?
+        findById(id);
         repository.deleteById(id);
     }
 

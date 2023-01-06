@@ -112,6 +112,11 @@ public class BidListServiceTest {
 
     @Test
     public void testDelete() {
+        // Arrange
+        BidList bidListFromRepo = new BidList();
+        bidListFromRepo.setBidListId(BID_LIST_ID);
+        when(repository.findById(BID_LIST_ID)).thenReturn(Optional.of(bidListFromRepo));
+
         // Act
         service.delete(BID_LIST_ID);
 
