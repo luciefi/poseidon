@@ -41,7 +41,7 @@
 			<div class="form-group m-3">
 				<label for="bidQuantityInput" class="form-label h6 p-1">Bid quantity</label>
 				<input
-						type="number" th:field="*{bidQuantity}" class="form-control" id="bidQuantityInput"
+						type="number" step=".01" th:field="*{bidQuantity}" class="form-control" id="bidQuantityInput"
 						placeholder="Bid quantity" min="0">
 				<div class="text-danger p-1">
 					<small th:if="${#fields.hasErrors('bidQuantity')}" th:errors="*{bidQuantity}"></small>

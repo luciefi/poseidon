@@ -28,7 +28,7 @@
             <div class="form-group m-3">
                 <label for="termInput" class="form-label h6 p-1">Term</label>
                 <input
-                        type="number" th:field="*{term}" class="form-control" id="termInput"
+                        type="number" step=".01" th:field="*{term}" class="form-control" id="termInput"
                         placeholder="Term" min="0">
                 <div class="text-danger p-1">
                     <small th:if="${#fields.hasErrors('term')}" th:errors="*{term}"></small>
@@ -37,7 +37,7 @@
             <div class="form-group m-3">
                 <label for="valueInput" class="form-label h6 p-1">Value</label>
                 <input
-                        type="number" th:field="*{value}" class="form-control" id="valueInput"
+                        type="number" step=".01" th:field="*{value}" class="form-control" id="valueInput"
                         placeholder="Value" min="0">
                 <div class="text-danger p-1">
                     <small th:if="${#fields.hasErrors('value')}" th:errors="*{value}"></small>
