@@ -5,3 +5,5 @@ public class UserNotFoundException extends NotFoundException {
         super("User could not be found.");
     }
 }
+
+
