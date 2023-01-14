@@ -25,10 +25,19 @@ public class RuleTests {
 	public void ruleTest() {
 		RuleName rule = new RuleName(); //"Rule Name", "Description", "Json", "Template", "SQL", "SQL Part");
 
+		rule.setName("name");
+		rule.setDescription("description");
+		rule.setJson("json");
+
+		rule.setTemplate("template");
+		rule.setSqlStr("sql str");
+		rule.setSqlPart("sql part");
+
+
 		// Save
 		rule = ruleNameRepository.save(rule);
 		Assert.assertNotNull(rule.getId());
-		Assert.assertTrue(rule.getName().equals("Rule Name"));
+		Assert.assertTrue(rule.getName().equals("name"));
 
 		// Update
 		rule.setName("Rule Name Update");

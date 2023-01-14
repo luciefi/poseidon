@@ -23,6 +23,9 @@ public class CurvePointTests {
 	public void curvePointTest() {
 		CurvePoint curvePoint = new CurvePoint();
 		curvePoint.setId(10);
+		curvePoint.setCurveId(10);
+		curvePoint.setValue(10d);
+		curvePoint.setTerm(10d);
 
 		// Save
 		curvePoint = curvePointRepository.save(curvePoint);

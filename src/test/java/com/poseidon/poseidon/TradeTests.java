@@ -23,7 +23,8 @@ public class TradeTests {
 	public void tradeTest() {
 		Trade trade = new Trade();
 		trade.setAccount("Trade Account");
-		trade.setAccount("Type");
+		trade.setType("Type");
+		trade.setBuyQuantity(10d);
 
 		// Save
 		trade = tradeRepository.save(trade);

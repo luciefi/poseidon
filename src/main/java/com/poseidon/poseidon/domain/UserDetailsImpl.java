@@ -17,13 +17,14 @@ public class UserDetailsImpl implements UserDetails {
     private String userName;
     private String password;
 
-    private Long id;
+    private Integer id;
     private List<GrantedAuthority> authorities;
 
     public UserDetailsImpl(User user) {
+        this.id = user.getId();
         this.userName = user.getUsername();
         this.password = user.getPassword();
-        this.authorities = Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + user.getRole().name()));
+        this.authorities = Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + user.getRole().name().toUpperCase()));
     }
 
     public UserDetailsImpl() {
@@ -64,7 +65,7 @@ public class UserDetailsImpl implements UserDetails {
         return true;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 }
