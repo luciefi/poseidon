@@ -7,8 +7,8 @@
 <body>
 <div class="container my-5">
     <div class="row">
+        <h3>Login with Username and Password</h3>
         <div class="border rounded col-5 offset-3 my-5">
-
             <form method="post"
                   th:action="@{/login}">
                 <div th:if="${param.error}" class="alert alert-danger alert-dismissible fade show m-3" role="alert">
@@ -30,6 +30,13 @@
             </form>
         </div>
     </div>
+    <div class="row">
+        <h3>Login with Github</h3>
+        <p>
+            <a th:href="${gitHubUrl}">Login</a>
+        </p>
+    </div>
+
 </div>
 
 </body>
