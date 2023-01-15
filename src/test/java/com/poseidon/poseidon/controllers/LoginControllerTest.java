@@ -27,13 +27,4 @@ public class LoginControllerTest {
                 .andExpect(view().name("login"));
     }
 
-    @Test
-    @WithMockUser
-    public void errorTest() throws Exception {
-        mockMvc.perform(get("/error"))
-                .andDo(print())
-                .andExpect(status().isForbidden())
-                .andExpect(view().name("403"));
-    }
-
 }

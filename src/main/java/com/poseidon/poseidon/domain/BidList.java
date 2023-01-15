@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
 import java.sql.Timestamp;
 
@@ -29,7 +30,7 @@ public class BidList {
     String type; // VARCHAR(30)
 
     @NotNull(message = "bidQuantity is mandatory")
-    @PositiveOrZero
+    @Positive
     Double bidQuantity;
 
     @PositiveOrZero

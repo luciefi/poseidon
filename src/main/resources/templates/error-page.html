@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Error</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+
+</head>
+<body>
+<div class="container">
+    <div class="row m-3">
+        <h3>An error occurred</h3>
+    </div>
+    <div class="row m-3">
+        <p class="error" ><span th:text="${statusCode}"></span> : <span th:text="${errorMsg}"></span> </p>
+    </div>
+    <div class="row m-3">
+        Logged in user: <b th:inline="text" class="user"> [[${#httpServletRequest.remoteUser}]] </b>
+        <form th:action="@{/app-logout}" method="POST" class="mx-3">
+            <input type="submit" value="Logout"/>
+        </form>
+    </div>
+</div>
+</body>
+</html>   

@@ -25,10 +25,4 @@ public class HomeControllerTest {
         mockMvc.perform(get("/")).andDo(print()).andExpect(status().isOk()).andExpect(view().name("home")).andExpect(content().string(containsString(
                 "HOME PAGE")));
     }
-
-    @Test
-    @WithMockUser(username="admin",roles={"ADMIN"})
-    public void testAdminHome() throws Exception {
-        mockMvc.perform(post("/admin/home")).andDo(print()).andExpect(status().isFound()).andExpect(view().name("redirect:/user/list"));
-    }
 }

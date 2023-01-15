@@ -1,6 +1,5 @@
 package com.poseidon.poseidon.controllers;
 
-import com.poseidon.poseidon.domain.UserRole;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -18,12 +17,5 @@ public class HomeController {
     public String home(Model model) {
         logger.info("Sending unauthenticated home page");
         return "home";
-    }
-
-    @RequestMapping("/admin/home")
-    @RolesAllowed("Admin")
-    public String adminHome(Model model) {
-        logger.info("Sending admin home page");
-        return "redirect:/user/list";
     }
 }

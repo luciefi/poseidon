@@ -3,38 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 </head>
 <body>
-<div class="container my-5">
-    <div class="row">
-        <h3>Login with Username and Password</h3>
-        <div class="border rounded col-5 offset-3 my-5">
+<div class="container my-5 ">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <h3>Login with Username and Password</h3>
             <form method="post"
-                  th:action="@{/login}">
-                <div th:if="${param.error}" class="alert alert-danger alert-dismissible fade show m-3" role="alert">
+                  th:action="@{/login}" class="my-4 justify-content-center">
+                <div th:if="${param.error}" class="alert alert-danger alert-dismissible fade show my-3" role="alert">
                     Bad credentials
                 </div>
-                <div class="form-group m-3">
+                <div class="row form-group my-3 align-items-center">
+                    <label for="username" class="col-3 form-label h6">Username : </label>
                     <input id="username" name="username" a
-                           type="text" class="form-control"
+                           type="text" class="col-7 form-control"
                            placeholder="UserName" maxlength="255">
                 </div>
-                <div class="form-group m-3">
+                <div class="row form-group my-3 align-items-center">
+                    <label for="password" class="col-3 form-label h6">Password : </label>
                     <input
-                            type="password" name="password" class="form-control" id="password"
-                            placeholder=" Password" maxlength="64" minlength="8">
+                            type="password" name="password" class="col-7 form-control" id="password"
+                            placeholder="Password" maxlength="64" minlength="8">
                 </div>
-                <div class="d-flex justify-content-center flex-nowrap">
-                    <button type="submit" class="my-5 btn btn-primary">Login</button>
+                <div class="row">
+                    <button type="submit" class="my-2 btn btn-primary col-2 offset-5">Login</button>
                 </div>
             </form>
         </div>
     </div>
-    <div class="row">
-        <h3>Login with Github</h3>
-        <p>
-            <a th:href="${gitHubUrl}">Login</a>
-        </p>
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <h3>Login with Github</h3>
+            <div class="row justify-content-center my-3">
+                <a th:href="${gitHubUrl}">
+                    <div class="card text-center" style="width: 8rem;">
+                        <img class="card-img-left m-2" src="../image/github-mark.svg" alt="git hub logo">
+                        <div class="card-body">
+                            <p class="card-text">Login with Github</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
     </div>
 
 </div>
