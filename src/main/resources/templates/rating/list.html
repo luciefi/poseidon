@@ -17,7 +17,10 @@
             <a href="/ruleName/list">Rule</a>
         </div>
         <div class="col-6 text-right">
-            Logged in user: <b th:inline="text" class="user"> [[${#httpServletRequest.remoteUser}]] </b>
+            Logged in user: <b th:inline="text" class="user"> [[${#httpServletRequest.remoteUser.matches('[0-9]{6,10}') ?
+            #httpServletRequest.userPrincipal.principal.getAttribute('login')
+            : #httpServletRequest.remoteUser
+            }]]</b>
             <form th:action="@{/app-logout}" method="POST">
                 <input type="submit" value="Logout"/>
             </form>
@@ -45,8 +48,8 @@
                 <td><span th:text="${rating.id}">Id</span></td>
                 <td><span th:text="${rating.moodysRating}">MoodysRating</span></td>
                 <td><span th:text="${rating.sandPRating}">SandPRating</span></td>
-				<td><span th:text="${rating.fitchRating}">FitchRating</span></td>
-				<td><span th:text="${rating.orderNumber}">OrderNumber</span></td>
+                <td><span th:text="${rating.fitchRating}">FitchRating</span></td>
+                <td><span th:text="${rating.orderNumber}">OrderNumber</span></td>
                 <td><a th:href="@{/rating/update/{id} (id=${rating.id})}">Edit</a>&nbsp;|&nbsp;<a
                         th:href="@{/rating/delete/{id} (id=${rating.id} )}">Delete
                 </a>

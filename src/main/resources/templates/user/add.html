@@ -39,11 +39,19 @@
             </div>
             <div class="form-group">
                 <label for="password" class="col-sm-2 control-label">Role</label>
-                <div th:each="userRole : ${T(com.poseidon.poseidon.domain.UserRole).values()}">
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" th:id="${userRole}" th:field="*{role}" th:value="${userRole}" class="custom-control-input">
-                        <label th:for="${userRole}" class="custom-control-label" th:text="${userRole}">role</label>
-                    </div>
+                <br/>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="User" th:field="*{role}"
+                           value="User"
+                           class="custom-control-input" checked>
+                    <label for="User" class="custom-control-label"
+                    >User</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="Admin" th:field="*{role}"
+                           value="Admin" class="custom-control-input" disabled>
+                    <label for="Admin" class="custom-control-label"
+                    >Admin</label>
                 </div>
                 <p class="text-danger" th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></p>
             </div>

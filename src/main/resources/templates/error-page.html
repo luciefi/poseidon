@@ -11,10 +11,13 @@
         <h3>An error occurred</h3>
     </div>
     <div class="row m-3">
-        <p class="error" ><span th:text="${statusCode}"></span> : <span th:text="${errorMsg}"></span> </p>
+        <p class="error"><span th:text="${statusCode}"></span> : <span th:text="${errorMsg}"></span></p>
     </div>
     <div class="row m-3">
-        Logged in user: <b th:inline="text" class="user"> [[${#httpServletRequest.remoteUser}]] </b>
+        Logged in user: <b th:inline="text" class="user"> [[${#httpServletRequest.remoteUser.matches('[0-9]{6,10}') ?
+        #httpServletRequest.userPrincipal.principal.getAttribute('login')
+        : #httpServletRequest.remoteUser
+        }]] </b>
         <form th:action="@{/app-logout}" method="POST" class="mx-3">
             <input type="submit" value="Logout"/>
         </form>

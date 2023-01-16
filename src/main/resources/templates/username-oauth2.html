@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Choose username</title>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+</head>
+<body>
+<div class="container my-5 ">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <h3>Welcome to Poseidon!</h3>
+            <div class="alert alert-danger alert-dismissible fade show my-2" role="alert" th:unless="${#strings.isEmpty(errorMessage)}">
+                <span th:text="${errorMessage}"></span>
+            </div>
+            <form method="post"
+                  th:action="@{/username}" class="my-4 justify-content-center">
+
+                <div class="row form-group my-3 align-items-center">
+                    <label for="string" class="col-3 form-label h6">Please choose a username : </label>
+                    <input
+                            type="text" name="string" class="col-7 form-control" id="string"
+                            placeholder="Username" maxlength="125" minlength="1">
+                </div>
+                <div class="row">
+                    <button type="submit" class="my-2 btn btn-primary col-2 offset-5">Ok</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <div class="row justify-content-center my-3">
+                    <div class="card text-center" style="width: 8rem;">
+                        <img class="card-img-left m-2" src="../image/github-mark.svg" alt="git hub logo">
+                        <div class="card-body">
+                            <p class="card-text">Login with Github</p>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

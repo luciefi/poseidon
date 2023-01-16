@@ -58,7 +58,7 @@ public class UserControllerTest {
     @Test
     public void testValidate() throws Exception {
         String content = "fullname=" + USER_FULL_NAME + "&username=" + USER_NAME + "&password=" + USER_PASSWORD + "&role=" + USER_ROLE;
-        mockMvc.perform(post("/user/validate").contentType(MediaType.APPLICATION_FORM_URLENCODED).content(content)).andDo(print()).andExpect(status().isFound()).andExpect(view().name("redirect:/user/list"));
+        mockMvc.perform(post("/user/validate").contentType(MediaType.APPLICATION_FORM_URLENCODED).content(content)).andDo(print()).andExpect(status().isFound()).andExpect(view().name("redirect:/bidList/list"));
         ArgumentCaptor<User> user = ArgumentCaptor.forClass(User.class);
         verify(service, Mockito.times(1)).save(user.capture());
         assertEquals(USER_FULL_NAME, user.getValue().getFullname());

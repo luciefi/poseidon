@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -19,11 +20,13 @@ public class SpringSecurityConfig {
     @Autowired
     private UserDetailsService userDetailsService;
 
+    @Autowired
+    private OAuth2AuthorizedClientService oAuth2AuthorizedClientService;
+
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService);
@@ -34,15 +37,17 @@ public class SpringSecurityConfig {
         return http.csrf(AbstractHttpConfigurer::disable).authorizeRequests(auth -> {
                     auth.antMatchers("/").permitAll();
                     auth.antMatchers("/admin/**").hasRole("ADMIN");
-                    auth.antMatchers("/user/**").hasRole("ADMIN");
+                    auth.antMatchers("/user/list").hasRole("ADMIN");
+                    auth.antMatchers("/user/update/**").hasRole("ADMIN");
+                    auth.antMatchers("/user/delete/**").hasRole("ADMIN");
                     auth.antMatchers("/user/add").permitAll();
-                    auth.antMatchers(HttpMethod.POST, "/user/validate").anonymous();
+                    auth.antMatchers(HttpMethod.POST, "/user/validate").permitAll();
                     auth.antMatchers("/css/bootstrap.min.css").permitAll();
                     auth.antMatchers("/image/github-mark.svg").permitAll();
                     auth.anyRequest().authenticated();
                 }).formLogin(formLogin -> {
                     formLogin.loginPage("/login");
-                    formLogin.defaultSuccessUrl("/bidList/list");
+                    formLogin.defaultSuccessUrl("/bidList/list", true);
                     formLogin.permitAll();
                 }).logout(logout -> {
                     logout.logoutUrl("/app-logout");
@@ -50,8 +55,7 @@ public class SpringSecurityConfig {
                 })
                 .oauth2Login(oauth2Login -> {
                     oauth2Login.loginPage("/login");
-                    // oauth2Login.loginProcessingUrl("/login"); // TODO créer utlisateur en base ??
-                    oauth2Login.defaultSuccessUrl("/bidList/list");
+                    oauth2Login.defaultSuccessUrl("/loginSuccess", true);
                     oauth2Login.permitAll();
                 })
                 .build();

@@ -3,6 +3,7 @@ package com.poseidon.poseidon.controllers;
 import com.poseidon.poseidon.domain.User;
 import com.poseidon.poseidon.exceptions.NewUserWithEmptyPasswordException;
 import com.poseidon.poseidon.exceptions.UserNotFoundException;
+import com.poseidon.poseidon.exceptions.UsernameAlreadyExistsException;
 import com.poseidon.poseidon.services.IUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -50,8 +50,8 @@ public class UserController {
         try {
             service.save(user);
             logger.info("New user saved");
-            return "redirect:/user/list";
-        } catch (NewUserWithEmptyPasswordException e) {
+            return "redirect:/bidList/list";
+        } catch (NewUserWithEmptyPasswordException | UsernameAlreadyExistsException e) {
             ObjectError error = new ObjectError("globalError", e.getMessage());
             result.addError(error);
             logger.info("Cannot create user : " + e.getMessage());
@@ -76,9 +76,9 @@ public class UserController {
         }
         try {
             service.update(user, id);
-            logger.info("User with id "+ id +" updated");
+            logger.info("User with id " + id + " updated");
             return "redirect:/user/list";
-        } catch (UserNotFoundException e) {
+        } catch (UserNotFoundException | UsernameAlreadyExistsException e) {
             ObjectError error = new ObjectError("globalError", e.getMessage());
             result.addError(error);
             logger.info("Cannot update user : " + e.getMessage());
@@ -89,7 +89,7 @@ public class UserController {
     @GetMapping("/user/delete/{id}")
     public String deleteUser(@PathVariable("id") Integer id, Model model) {
         service.delete(id);
-        logger.info("User with id "+ id +" deleted");
+        logger.info("User with id " + id + " deleted");
         return "redirect:/user/list";
     }
 }
